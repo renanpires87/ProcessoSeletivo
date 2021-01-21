@@ -1,0 +1,46 @@
+<div class="container main-container">
+
+    <h1>Lista de Contas Bancárias</h1>
+
+    <p>
+        <a class="btn btn-info" [routerLink]="['/contasbancarias/adicionar-novo']">Nova Conta Bancária</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código Banco</th>
+                <th>Número da Conta</th>
+                <th>Número da Agência</th>
+                <th>Nome/Razão Social</th>
+                <th>Situação</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let contaBancaria of contasBancarias">
+            <td>
+                {{ contaBancaria.banco.codigoBanco }}
+            </td>
+            <td>
+                {{ contaBancaria.numeroDaConta }}
+            </td>
+            <td>
+                {{ contaBancaria.numeroDaAgencia }}
+            </td>
+            <td>
+                {{ contaBancaria.nomeRazaoSocialTitular }}
+            </td>
+            <td>
+                {{ contaBancaria.ativo ? 'Ativo' : 'Inativo'}}
+            </td>
+            <td class="text-right">
+                <a class="btn btn-warning" [routerLink]="['/contasbancarias/editar',contaBancaria.id]">
+                    <span class="fa fa-pencil-alt"></span>
+                </a>&nbsp;
+                <a class="btn btn-danger" (click)="excluir(contaBancaria.id)" style="cursor: pointer;">
+                    <span class="fa fa-trash"></span>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

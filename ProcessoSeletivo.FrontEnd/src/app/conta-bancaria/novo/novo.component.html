@@ -1,0 +1,102 @@
+<div class="container main-container">
+
+    <h1>Nova Conta Bancaria</h1>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="adicionarContaBancaria()" [formGroup]="contaBancariaForm">
+
+                <div class="alert alert-danger" *ngIf="errors.length > 0">
+                    <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <!-- <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" id="ativo" formControlName="ativo" name="ativo" value="true"> Ativo?
+                    </label>
+                </div> -->
+
+                <div class="form-group">
+                    <label class="control-label">Nome / Razão Social</label>
+                    <div>
+                        <input class="form-control" id="nomeRazaoSocialTitular" type="text"
+                            placeholder="Nome (requerido)" formControlName="nomeRazaoSocialTitular"
+                            [ngClass]="{'is-invalid': displayMessage.nomeRazaoSocialTitular }" />
+                        <span class="text-danger" *ngIf="displayMessage.nomeRazaoSocialTitular">
+                            <p [innerHTML]="displayMessage.nomeRazaoSocialTitular"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="TipoPessoa">Tipo</label><br>
+                    <input type="radio" value="1" id="tipoPessoa" formControlName="tipoPessoa" name="tipoPessoa"> Pessoa
+                    Física<br>
+                    <input type="radio" value="2" id="tipoPessoa" formControlName="tipoPessoa" name="tipoPessoa"> Pessoa
+                    Jurídica
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Documento</label>
+                    <div>
+                        <input class="form-control" id="cpfCnpj" type="text" placeholder="{{ textoDocumento }}"
+                            formControlName="cpfCnpj"
+                            [textMask]="tipoPessoaForm().value === '1' ? {mask: MASKS.cpf.textMask} : {mask: MASKS.cnpj.textMask}"
+                            [ngClass]="{'is-invalid': displayMessage.cpfCnpj }" />
+
+                        <span class="text-danger" *ngIf="displayMessage.cpfCnpj">
+                            <p [innerHTML]="displayMessage.cpfCnpj"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Banco</label>
+                    <select class="form-control" id="bancoId" formControlName="bancoId"
+                        [ngClass]="{'is-invalid': displayMessage.bancoId }">
+                        <option *ngFor="let banco of bancos" value="{{ banco.id }}">{{ banco.codigoBanco }} - {{
+                            banco.nomeInstituicao }}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.bancoId">
+                        <p [innerHTML]="displayMessage.bancoId"></p>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Número da Agência</label>
+                    <div>
+                        <input class="form-control" id="numeroDaAgencia" type="text" placeholder="Número da Agência (requerido)"
+                            formControlName="numeroDaAgencia"
+                            [ngClass]="{'is-invalid': displayMessage.numeroDaAgencia }" />
+
+                        <span class="text-danger" *ngIf="displayMessage.numeroDaAgencia">
+                            <p [innerHTML]="displayMessage.numeroDaAgencia"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Número da Conta</label>
+                    <div>
+                        <input class="form-control" id="numeroDaConta" type="text" placeholder="Número da Conta (requerido)"
+                            formControlName="numeroDaConta"
+                            [ngClass]="{'is-invalid': displayMessage.numeroDaConta }" />
+
+                        <span class="text-danger" *ngIf="displayMessage.numeroDaConta">
+                            <p [innerHTML]="displayMessage.numeroDaConta"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary">&nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/contasbancarias/listar-todos']">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

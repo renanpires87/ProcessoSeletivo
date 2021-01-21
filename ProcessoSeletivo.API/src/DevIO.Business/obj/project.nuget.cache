@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DlcTd/7KfA+WqG9pYUND7DkspW9ym6zWca1KYb59WZbNqamncCwUplS+x4CvEO8djWhyedUwwl/YXz0BC7qpkw==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\MegaWork\\ProcessoSeletivo.API\\src\\DevIO.Business\\DevIO.Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Renan\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
+    "C:\\Users\\Renan\\.nuget\\packages\\system.componentmodel.annotations\\4.4.1\\system.componentmodel.annotations.4.4.1.nupkg.sha512"
+  ],
+  "logs": []
+}
